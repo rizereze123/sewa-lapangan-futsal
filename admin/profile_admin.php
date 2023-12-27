@@ -87,6 +87,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
                                                             <input type="hidden" name="admin_id" value="<?php echo $row['admin_id']; ?>">
+                                                            <?php $_SESSION['current_email'] = $row['email']; ?>
                                                             <label for="email">Email</label>
                                                             <input type="email" id="email" class="form-control" name="email" value="<?php echo $row['email']; ?>" placeholder="Masukkan Email" required>
                                                         </div>
@@ -107,7 +108,8 @@ if (!isset($_SESSION['admin_email'])) {
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
                                                             <label for="password">Password</label>
-                                                            <input type="password" id="password" class="form-control" name="password" value="<?php echo $row['password']; ?>" placeholder="Masukkan Password" required>
+                                                            <input type="password" id="password" class="form-control" name="password" value="<?php $decryptedPassword = base64_decode($row['password']);
+                                                                                                                                                echo $decryptedPassword; ?>" placeholder="Masukkan Password" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 d-flex justify-content-end">

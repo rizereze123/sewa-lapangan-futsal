@@ -487,6 +487,7 @@ session_start();
             pemesanan.tanggal_pemesanan,
             pemesanan.jam_mulai,
             pemesanan.jam_selesai,
+            pemesanan.lapangan,
             pelanggan.nama_lengkap,
             pembayaran.status
         FROM
@@ -499,7 +500,7 @@ session_start();
             $events = array();
             while ($row = mysqli_fetch_assoc($result)) {
                 $event = array(
-                    'title' => $row['nama_lengkap'],
+                    'title' => $row['nama_lengkap'] . ", " .  $row['lapangan'],
                     'start' => $row['tanggal_pemesanan'] . 'T' . $row['jam_mulai'],
                     'end' => $row['tanggal_pemesanan'] . 'T' . $row['jam_selesai'],
                     'status' => $row['status']
